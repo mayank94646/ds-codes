@@ -1,0 +1,51 @@
+//linkedlist
+import java.util.*;
+
+class Node
+{
+    int data;
+    Node next;
+    Node()
+    {
+
+    }
+    Node(int data)
+    {
+        this.data=data;
+    }
+}
+
+class Linkedlist{
+    Node head;
+    public void palidrome()////remember concept of slow and fast
+    {
+        boolean qw=true;
+        Node slow = head;
+        Node fast = head;
+        while(fast!=null &&fast.next!=null)
+        {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        slow = reverseiterative(slow);
+        fast = head;
+        while(slow!=null)
+        {
+            if(slow.data!=fast.data)
+            {
+                qw =false;
+                break;
+            }
+            slow=slow.next;
+            fast=fast.next;
+        }
+        if(qw==true)
+        {
+            System.out.println("palindrme");
+        }
+        else
+        {
+            System.out.println("not pali");
+        }
+    }
+    }
