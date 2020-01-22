@@ -1,0 +1,35 @@
+class Node
+{
+    int data;
+    Node next;
+    Node()
+    {
+
+    }
+    Node(int data)
+    {
+        this.data=data;
+    }
+}
+
+class Linkedlist{
+    Node head;
+
+public void deleteat(int index)
+    {
+        if(index==0)
+        {
+            deleteatstart();
+        }
+        else
+        {
+            Node n = head;
+            for (int i=0;i<index-1 ;i++ )
+            {
+                n= n.next;
+            }
+
+            n.next = n.next.next;
+        }
+    }
+}
