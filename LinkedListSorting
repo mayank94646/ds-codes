@@ -1,0 +1,40 @@
+//linkedlist
+import java.util.*;
+
+class Node
+{
+    int data;
+    Node next;
+    Node()
+    {
+
+    }
+    Node(int data)
+    {
+        this.data=data;
+    }
+}
+
+class Linkedlist{
+    Node head;
+public Node sort(Node head)
+    {
+        Node n = head;
+        while(n!=null)
+        {
+            Node m = n.next;
+            while(m!=null)
+            {
+                if(n.data>m.data)
+                {
+                    int swap = m.data;
+                    m.data= n.data;
+                    n.data = swap;
+                }
+                m = m.next;
+            }
+            n=n.next;
+        }
+        return head;
+    }
+ }
