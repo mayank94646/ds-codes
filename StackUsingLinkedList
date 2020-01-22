@@ -1,0 +1,75 @@
+import java.util.*;
+
+
+class Node
+{
+    int data;
+    Node next;
+    Node(int data)
+    {
+        this.data=data;
+    }
+}
+
+class stackll {
+    Node head;
+    public void push(int data)/////////////////////////////////insertion at start/////no overflow because linked list use ki ha ..to unlimited nodes add karo..
+    {
+        Node n = new Node(data);
+        if(head==null)
+        {
+            head=n;
+        }
+        else
+        {
+            n.next = head;
+            head= n;
+        }
+    }
+    public void pop()//////////////////////////////////deletion at start///////underflow to check hoga hi  ki abb linked list hi khali ha kya pop hoga..to underflow ayega
+    {
+        if(head==null)
+        {
+            System.out.println("underflow no element to delete");
+        }
+        else
+        {
+            head  = head.next;
+        }
+    }
+    public void show()
+    {
+        if(head==null)
+        {
+            System.out.println("nothing to print linked list khali ha");
+        }
+        else
+        {
+            Node m = head;
+            while(m!=null)
+            {
+                System.out.println(m.data);
+                m= m.next;
+            }
+        }
+    }
+    public void peek()
+    {
+        System.out.println(head.data);
+    }
+
+}
+
+
+class mystackusinglinkedlist
+{
+    public static void main(String[] args) {
+        stackll s  = new stackll();
+        s.push(1);
+        s.push(2);
+
+        s.push(78);
+        s.peek();
+
+    }
+}
