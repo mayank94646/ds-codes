@@ -1,0 +1,94 @@
+import java.util.*;
+
+
+/////circular using linked list
+
+
+
+class Node
+{
+    int data;
+    Node next;
+    Node(int data)
+    {
+        this.data = data;
+    }
+}
+
+
+class Queue{
+    Node front , rear;
+    Queue()
+    {
+        front = null;
+        rear = null;
+    }
+    public void enquque(int data)
+    {
+        Node temp = new Node(data);
+        if(front==null)
+        {
+            front =temp;
+            rear = temp;
+        }
+        else
+        {
+            rear.next = temp;
+            rear = rear.next;
+        }
+        rear.next = front;
+    }
+    public void dequque()
+    {
+        if(front==null)
+        {
+            System.out.println("empty ha bhai");
+        }
+        else
+        {
+            if(front==rear)
+            {
+                front=null;
+                rear = null;
+            }
+            else
+            {
+                front = front.next;
+            rear.next = front;
+            }
+        }
+    }
+    public void show()
+    {
+        if(front==null)
+        {
+            System.out.println("bhull jao");
+        }
+        else
+        {
+        Node n = front;
+        while(n.next!=front)
+        {
+            System.out.println(n.data);
+            n = n.next;
+        }
+        System.out.println(n.data);
+    }
+    }
+}
+
+
+class myQueueCircularll
+{
+    public static void main(String[] args) {
+        Queue q = new Queue();
+        q.enquque(1);
+        q.enquque(2);
+        q.enquque(3);
+        q.enquque(4);
+        q.enquque(5);
+        q.dequque();
+        q.enquque(1);
+        q.show();
+    }
+}
