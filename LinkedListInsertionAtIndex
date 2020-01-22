@@ -1,0 +1,40 @@
+//linkedlist
+import java.util.*;
+
+class Node
+{
+    int data;
+    Node next;
+    Node()
+    {
+
+    }
+    Node(int data)
+    {
+        this.data=data;
+    }
+}
+
+class Linkedlist{
+    Node head;
+    public void insertat(int index,int data)
+    {
+        Node node = new Node();
+        node.data = data;
+        node.next = null;
+        if(index==0)
+        {
+            insertatstart(data);
+        }
+        else
+        {
+        Node n = head;
+        for(int i=0;i<index-1;i++)
+        {
+            n = n.next;
+        }
+        node.next = n.next;
+        n.next = node;
+    }
+    }
+    }
