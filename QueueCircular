@@ -1,0 +1,84 @@
+import java.util.*;
+
+class Queue
+{
+    int myqueue[];
+    int size = 0;
+    int front = 0;
+    int rear = 0;
+    int capacity;
+    Queue(int c)
+    {
+        capacity = c;
+        myqueue = new int[c];
+    }
+    public void enquque(int data)
+    {
+        if(!overflow())
+        {
+        myqueue[rear] = data;
+        rear = (rear +1)%capacity;
+        size++;
+        }
+        else
+        {
+            System.out.println("full ha bhai");
+        }
+    }
+    public void dequque()
+    {
+        if(!underflow())
+        {
+        front = (front+1)%capacity;
+        size--;
+        }
+        else
+        {
+            System.out.println("its already empty");
+        }
+    }
+    public void  show()
+    {
+        for(int i=front;i<front+size;i++)
+        {
+            System.out.println(myqueue[(i)%capacity]);
+        }
+    }
+    public boolean overflow()
+    {
+        if(size==capacity)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public boolean underflow()
+    {
+        if(size==0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+}
+
+class myQueueCircular
+{
+    public static void main(String[] args) {
+        Queue q = new Queue(5);
+        q.enquque(1);
+        q.enquque(2);
+        q.enquque(3);
+        q.enquque(4);
+        q.enquque(5);
+        q.dequque();
+        q.enquque(5);
+        q.show();
+    }
+}
