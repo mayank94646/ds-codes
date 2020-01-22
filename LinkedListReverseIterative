@@ -1,0 +1,35 @@
+
+//linkedlist
+import java.util.*;
+
+class Node
+{
+    int data;
+    Node next;
+    Node()
+    {
+
+    }
+    Node(int data)
+    {
+        this.data=data;
+    }
+}
+
+class Linkedlist{
+    Node head;
+public Node reverseiterative(Node x)///////////////////////////remember concept next and previous and current
+    {
+        Node current = x;
+        Node previous = null;
+        Node next = null;
+        while(current!=null)
+        {
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+        return previous;
+    }
+  }
