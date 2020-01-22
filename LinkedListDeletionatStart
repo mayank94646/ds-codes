@@ -1,0 +1,24 @@
+//linkedlist
+import java.util.*;
+
+class Node
+{
+    int data;
+    Node next;
+    Node()
+    {
+
+    }
+    Node(int data)
+    {
+        this.data=data;
+    }
+}
+
+class Linkedlist{
+    Node head;
+    public void deleteatstart()
+    {
+        head = head.next;
+    }
+}
