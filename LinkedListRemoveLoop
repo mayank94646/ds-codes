@@ -1,0 +1,56 @@
+//linkedlist
+import java.util.*;
+
+class Node
+{
+    int data;
+    Node next;
+    Node()
+    {
+
+    }
+    Node(int data)
+    {
+        this.data=data;
+    }
+}
+
+class Linkedlist{
+    Node head;
+
+public boolean loop(Node head)
+    {
+        Node fast = head;
+        Node slow = head;
+        while(slow!=null&&fast!=null&&fast.next!=null)
+        {
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow==fast)
+            {
+                removeloop(head,slow);
+                return true;
+            }
+        }
+        return false;
+    }
+    public void removeloop(Node head,Node slow)
+    {
+        Node a = head;
+        Node b  =null;
+        while(1==1)
+        {
+            b= slow;
+            while(b.next!=slow&&b.next!=a)
+            {
+                b=b.next;
+            }
+            if(b.next==a)
+            {
+                b.next =null;
+                break;
+            }
+            a=a.next;
+        }
+    }
+  }
