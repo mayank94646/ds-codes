@@ -1,0 +1,96 @@
+//linkedlist
+import java.util.*;
+
+class Node
+{
+    int data;
+    Node next;
+    Node()
+    {
+
+    }
+    Node(int data)
+    {
+        this.data=data;
+    }
+}
+
+class Linkedlist{
+    Node head;
+    public Node subtracttwolinkedlist(Node x,Node y)
+    {
+        Node head1 =x;
+        Node head2 =y;
+        int count1=0;
+        int count2=0;
+        while(x!=null)
+        {
+            count1++;
+            x=x.next;
+        }
+        while(y!=null)
+        {
+            count2++;
+            y=y.next;
+        }
+        if(count2>count1)
+        {
+            Node temp = head1;
+            head1 =head2;
+            head2 = temp;
+        }
+        x=reverseiterative(x);
+        y=reverseiterative(y);
+        boolean rt = false;
+        if(count2==count1)
+        {
+            while(x!=null)
+            {
+                if(x.data<y.data)
+                {
+                    rt = true;
+                    break;
+                }
+                x = x.next;
+                y= y.next;
+            }
+        }
+
+        if(rt==true)
+        {
+            Node temp = head1;
+            head1 =head2;
+            head2 = temp;
+        }
+        x=head1;
+        y=head2;
+        Node meri = new Node();
+        Node newhead = meri;
+        boolean borrow =false;
+        while(x!=null ||y!=null)
+        {
+            int val1 = x.data;
+            int val2 = (y!=null) ? y.data : 0;
+            if(borrow==true)
+            {
+                val1 = val1-1;
+                borrow = false;
+            }
+            if(val2>val1)
+            {
+                val1=val1+10;
+                borrow=true;
+            }
+            int diff = val1-val2;
+            Node nw = new Node();
+            nw.data = diff;
+            meri.next = nw;
+            if(x!=null)
+            x = x.next;
+            if(y!=null)
+            y = y.next;
+            meri=meri.next;
+        }
+        return newhead.next;
+    }
+ }
