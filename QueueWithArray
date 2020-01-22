@@ -1,0 +1,78 @@
+import java.util.*;
+
+//with array
+
+class Queue
+{
+    int capacity = 0;
+    int myqueue[];
+    int front = 0;
+    int rear = 0;
+    Queue(int c)
+    {
+        capacity = c;
+        myqueue = new int[c];
+    }
+    public void enquque(int data)
+    {
+        if(rear==capacity)
+        {
+            System.out.println("queue is full");
+        }
+        else
+        {
+        myqueue[rear] = data;
+        rear++;
+        }
+    }
+    public void dequque()
+    {
+        if(front==rear)
+        {
+            System.out.println("empty ha bhai");
+        }
+        else
+        {
+            for(int i=0;i<rear-1;i++)
+            {
+                myqueue[i]=myqueue[i+1];
+            }
+            if(rear<capacity)
+            {
+                myqueue[rear]=0;
+            }
+            rear--;
+        }
+    }
+    public void  show()
+    {
+        if(front==rear)
+        {
+            System.out.println("empty");
+        }
+        else
+        {
+        for(int i=front;i<rear;i++)
+        {
+            System.out.println(myqueue[i]);
+        }
+    }
+    }
+}
+class myQueue
+{
+    public static void main(String[] args) {
+        Queue q = new Queue(5);
+        q.enquque(1);
+        q.enquque(2);
+        q.enquque(3);
+        q.enquque(4);
+        q.enquque(5);
+        q.dequque();
+        q.dequque();
+        q.dequque();
+        q.dequque();
+        q.dequque();
+        q.dequque();
+    }
+}
