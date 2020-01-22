@@ -1,0 +1,40 @@
+
+//linkedlist
+import java.util.*;
+
+class Node
+{
+    int data;
+    Node next;
+    Node()
+    {
+
+    }
+    Node(int data)
+    {
+        this.data=data;
+    }
+}
+
+class Linkedlist{
+    Node head;
+
+public void reverseusingstack()
+    {
+        Node n =head;
+        Stack<Integer> st = new Stack<Integer>();
+        while(n.next!=null)
+        {
+        st.push(n.data);
+        n= n.next;
+        }
+        st.push(n.data);
+        n = head;
+
+        while(st.empty()==false)
+        {
+            n.data=st.pop();
+            n= n.next;
+        }
+    }
+ }
