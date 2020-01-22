@@ -1,0 +1,55 @@
+import java.util.*;
+
+
+
+/////////////queue using 2 stacks
+
+
+
+class Queue{
+    Stack<Integer> s1 = new Stack<Integer>();
+    Stack<Integer> s2 = new Stack<Integer>();
+    public void enquque(int data)
+    {
+        while(!s1.isEmpty())
+        {
+            s2.push(s1.pop());
+        }
+        s1.push(data);
+        while(!s2.isEmpty())
+        {
+            s1.push(s2.pop());
+        }
+    }
+    public void dequque()
+    {
+        if(s1.isEmpty())
+        {
+            System.out.println("queue is empty");
+        }
+        else
+        {
+            s1.pop();
+        }
+    }
+    public void show()
+    {
+        while(!s1.isEmpty())
+        {
+            System.out.println(s1.pop());
+        }
+    }
+}
+class myQueueUsingStack{
+    public static void main(String[] args) {
+        Queue q = new Queue();
+        q.enquque(1);
+        q.enquque(2);
+        q.enquque(3);
+        q.enquque(4);
+        q.enquque(5);
+        q.dequque();
+        q.enquque(1);
+        q.show();
+    }
+}
