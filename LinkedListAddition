@@ -1,0 +1,48 @@
+//linkedlist
+import java.util.*;
+
+class Node
+{
+    int data;
+    Node next;
+    Node()
+    {
+
+    }
+    Node(int data)
+    {
+        this.data=data;
+    }
+}
+
+class Linkedlist{
+    Node head;
+public Node addtwolinkedlist(Node x,Node y)
+    {
+        Node meri = new Node();
+        Node newhead = meri;
+        int carry = 0;
+        while(x!=null || y!=null)
+        {
+            int val1 = (x!=null) ? x.data : 0;
+            int val2 = (y!=null) ? y.data : 0;
+            int sum = val1+val2 + carry;
+            carry = sum/10;
+            int digit = sum%10;
+            Node nw = new Node();
+
+            meri.next = nw;
+            if(x!=null)
+            x = x.next;
+            if(y!=null)
+            y = y.next;
+            meri=meri.next;
+        }
+        if(carry>0)
+        {
+            Node nw = new Node();
+            meri.next = nw;
+        }
+        return reverseiterative(newhead.next);
+    }
+    }
