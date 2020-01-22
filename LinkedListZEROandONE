@@ -1,0 +1,79 @@
+//linkedlist
+import java.util.*;
+
+class Node
+{
+    int data;
+    Node next;
+    Node()
+    {
+
+    }
+    Node(int data)
+    {
+        this.data=data;
+    }
+}
+
+class Linkedlist{
+    Node head;
+        public Node zeroone(Node root)
+      {
+        Node head = root;
+        while(root!=null)
+        {
+            if(root.data==0)
+            {
+                boolean t = false;
+                Node m = head;
+                while(m!=root)
+                {
+                    if(m.data!=0)
+                    {
+                        t= true;
+                        break;
+                    }
+                    m=m.next;
+                }
+                if(t==true)
+                {
+                int swap = m.data;
+                m.data= root.data;
+                root.data = swap;
+                }
+            }
+            root=root.next;
+        }
+
+        root =head;
+        while(root!=null)
+        {
+
+            if(root.data==2)
+            {
+                boolean t = false;
+                Node m =root.next;
+                while(m!=null)
+                {
+                    if(m.data!=2)
+                    {
+                        t= true;
+                        break;
+                    }
+                    m=m.next;
+                }
+                if(t==true)
+                {
+                int swap = m.data;
+                m.data= root.data;
+                root.data = swap;
+                }
+            }
+
+            root=root.next;
+        }
+
+
+        return head;
+    }
+ }
