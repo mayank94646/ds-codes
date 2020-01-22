@@ -1,0 +1,56 @@
+//linkedlist
+import java.util.*;
+
+class Node
+{
+    int data;
+    Node next;
+    Node()
+    {
+
+    }
+    Node(int data)
+    {
+        this.data=data;
+    }
+}
+
+class Linkedlist{
+    Node head;
+    public Node merge(Node x,Node y)
+    {
+        Node q= new Node(0);
+        Node ans = q;
+        while(x!=null&&y!=null)
+        {
+            if(x.data>y.data)
+            {
+                Node m = new Node(y.data);
+                q.next = m;
+                y=y.next;
+            }
+            else
+            {
+                Node m = new Node(x.data);
+                q.next = m;
+                x=x.next;
+            }
+            q=q.next;
+        }
+        while(x!=null)
+        {
+            Node m = new Node(x.data);
+            q.next = m;
+            x=x.next;
+            q=q.next;
+        }
+        while(y!=null)
+        {
+            Node m = new Node(y.data);
+            q.next = m;
+            y=y.next;
+            q=q.next;
+        }
+        return ans.next;
+    }
+ }
