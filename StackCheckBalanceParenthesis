@@ -1,0 +1,120 @@
+//Stack
+
+import java.util.*;
+
+class stack
+{
+    int top = -1;
+    int max = 5;
+    int ar[] = new int[max];
+    public void push(int data)
+    {
+        boolean y = overflow();
+        if(y==false)
+        {
+            top++;
+            ar[top]= data;
+        }
+        else
+        {
+            System.out.println("overflowed");
+        }
+    }
+    public void pop()
+    {
+        boolean y = underflow();
+        if(y==false)
+        {
+            top--;
+        }
+        else
+        {
+            System.out.println("underflowed");
+        }
+    }
+    public boolean overflow()
+    {
+        if(top==max-1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public boolean underflow()
+    {
+        if(top==-1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+    public int size()
+    {
+        return top+1;
+    }
+    public void display()
+    {
+        for(int i=0;i<top+1;i++)
+        {
+            System.out.println(ar[i]);
+        }
+    }
+    public int peek()
+    {
+        return ar[top];
+    }
+    public void checkbalance(String s)
+    {
+        char a[]=s.toCharArray();
+        for(int i=0;i<a.length;i++)
+        {
+            if(a[i]=='{'||a[i]=='('||a[i]=='[')
+                push(a[i]);
+            else if(a[i]=='}'||a[i]==')'||a[i]==']')
+            {
+                if('{'==ar[top]&&'}'==a[i]||'('==ar[top]&&')'==a[i]||'['==ar[top]&&']'==a[i])
+                {
+                    pop();
+                }
+                else
+                {
+                    System.out.println("not balanced");
+                    break;
+                }
+            }
+
+        }
+        if(top==-1)
+        {
+            System.out.println("balanced");
+        }
+    }
+}
+
+class mystack
+{
+    public static void main(String[] args) {
+        stack st1 = new stack();
+        st1.push(1);
+        st1.push(1);
+        st1.push(1);
+        st1.push(1);
+        st1.push(1);
+        st1.pop();
+        st1.pop();
+        st1.pop();
+        st1.pop();
+        st1.pop();
+        st1.pop();
+        st1.display();
+
+
+    }
+}
