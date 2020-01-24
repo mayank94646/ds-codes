@@ -1,0 +1,57 @@
+class Node
+{
+    int data;
+    Node left;
+    Node right;
+    Node(int data)
+    {
+        this.data = data;
+    }
+}
+
+class tree
+{
+    public Node createNode(int data)
+    {
+        Node temp = new Node(data);
+        return temp;
+    }
+    public Node insert(Node root,int data)
+    {
+
+        if(root==null)
+        {
+            return createNode(data);
+        }
+        else
+        {
+            if(data<root.data)
+            {
+                root.left = insert(root.left,data);
+            }
+            else
+            {
+                root.right = insert(root.right,data);
+            }
+            return root;
+        }
+
+    }
+    }
+    
+class myBST
+{
+    public static void main(String[] args) {
+        tree b = new tree();
+        Node root = null;
+        root = b.insert(root,8);
+        root = b.insert(root,3);
+        root = b.insert(root,6);
+        root = b.insert(root,10);
+        root = b.insert(root,4);
+        root = b.insert(root,7);
+        root = b.insert(root,1);
+        root = b.insert(root,14);
+        root = b.insert(root,13);
+        }
+  }
