@@ -1,0 +1,45 @@
+
+
+class Node
+{
+    int data;
+    Node left;
+    Node right;
+    Node(int data)
+    {
+        this.data = data;
+    }
+}
+
+class tree
+{
+public Node getparentnode(Node root , int data)
+    {
+        if(root==null)
+        {
+            return null;
+        }
+        else
+        {
+            Node parentNode = null;
+            while(root!=null)
+            {
+                if(data<root.data)
+                {
+                    parentNode = root;
+                    root=root.left;
+                }
+                else if(data>root.data)
+                {
+                    parentNode = root;
+                    root= root.right;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return root!=null ? parentNode: null ;
+        }
+    }
+   }
