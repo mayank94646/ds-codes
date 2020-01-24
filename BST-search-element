@@ -1,0 +1,42 @@
+class Node
+{
+    int data;
+    Node left;
+    Node right;
+    Node(int data)
+    {
+        this.data = data;
+    }
+}
+
+class tree
+{
+public boolean searchelement(Node root , int data)
+    {
+        if(root ==null)
+        {
+            return false;
+        }
+        else
+        {
+            boolean f = false;
+            while(root!=null)
+            {
+                if(data<root.data)
+                {
+                    root = root.left;
+                }
+                else if(data>root.data)
+                {
+                    root = root.right;
+                }
+                else
+                {
+                    f= true;
+                    break;
+                }
+            }
+        return f;
+        }
+    }
+ }
