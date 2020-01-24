@@ -1,0 +1,65 @@
+class Node
+{
+    int data;
+    Node left;
+    Node right;
+    Node(int data)
+    {
+        this.data = data;
+    }
+}
+
+class tree
+{
+public Node getinordersuccessornode(Node root,int data)
+    {
+        if(root==null)
+        {
+            return null;
+        }
+        else
+        {
+            Node inordersuccessorNode = null;
+            while(root != null)
+            {
+                if(data<root.data)
+                {
+                    inordersuccessorNode = root;
+                    root= root.left;
+                }
+                else if(data>root.data)
+                {
+                    root= root.right;
+                }
+                else
+                {
+                    if(root.right!=null)
+                    {
+                        inordersuccessorNode = getsuccessor(root);
+                    }
+                    break;
+                }
+            }
+            return root!=null?inordersuccessorNode:null;
+        }
+    }
+
+
+
+    public Node getsuccessor(Node root)
+    {
+        if(root==null)
+        {
+            return null;
+        }
+        else
+        {
+            Node temp = root.right;
+            while(temp.left!=null)
+            {
+                temp=temp.left;
+            }
+            return temp;
+        }
+    }
+}
