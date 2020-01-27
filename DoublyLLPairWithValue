@@ -1,0 +1,83 @@
+import java.util.*;
+
+import java.util.*;
+class Node
+{
+    int data;
+    Node previous;
+    Node next;
+    Node(int data)
+    {
+        this.data = data;
+    }
+}
+class doublylinkedlist
+{
+    Node head;
+    Node tail;
+    int length=0;
+    public void printstart()
+    {
+        if(head==null)
+        {
+            return;
+        }
+        Node n = head;
+        while(n!=null)
+        {
+            System.out.println(n.data);
+            n = n.next;
+        }
+
+    }
+    public void insertatend(int data)
+    {
+        Node temp = new Node(data);
+        if(length==0)
+        {
+            head = temp;
+        }
+        else
+        {
+            tail.next = temp;
+        }
+        temp.previous = tail;
+        tail = temp;
+        length++;
+    }
+    public void pairwithvalue(int x)
+    {
+        Node n = head;
+        while(n!=null)
+        {
+            Node m = n.next;
+            while(m!=null)
+            {
+                if(m.data+n.data==x)
+                {
+                    System.out.println("("+m.data+","+n.data+")");
+                }
+                m = m.next;
+            }
+            n= n.next;
+        }
+    }
+}
+
+class doublyllpairwithsum
+{
+    public static void main(String[] args) {
+        doublylinkedlist dl = new doublylinkedlist();
+        dl.insertatend(1);
+        dl.insertatend(2);
+        dl.insertatend(4);
+        dl.insertatend(5);
+        dl.insertatend(6);
+        dl.insertatend(8);
+        dl.insertatend(9);
+        Scanner o = new Scanner(System.in);
+        int x = o.nextInt();
+        dl.pairwithvalue(x);
+        dl.printstart();
+    }
+}
