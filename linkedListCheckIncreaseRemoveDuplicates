@@ -1,0 +1,109 @@
+import java.util.*;
+
+
+
+class node
+{
+    int data;
+    node next;
+    node(int data)
+    {
+        this.data= data;
+    }
+}
+class ll
+{
+    node head;
+    public void append(int data)
+    {
+        node n = new node(data);
+        if(head==null)
+        {
+            head=n;
+        }
+        else
+        {
+            node m = head;
+            while(m.next!=null)
+            {
+                m = m.next;
+            }
+            m.next = n;
+        }
+    }
+    public void show()
+    {
+        node m = head;
+        while(m!=null)
+        {
+            System.out.println(m.data);
+            m=m.next;
+        }
+    }
+    public void  checkandremovedup()
+    {
+        node n = head;
+        boolean y= true;
+        while(n!=null)
+        {
+            node m = n.next;
+            while(m!=null)
+            {
+                if(n.data>m.data)
+                {
+                    y = false;
+                }
+                m=m.next;
+            }
+            n=n.next;
+        }
+        if(y==false)
+        {
+            System.out.println("not in incresing order");
+        }
+        else
+        {
+            n = head;
+            while(n!=null)
+            {
+                boolean q = false;
+                node m = head;
+                while(m!=n)
+                {
+                    if(m.data == n.data)
+                    {
+                        q = true;
+                        break;
+                    }
+                    m = m.next;
+                }
+                if(q==true)
+                {
+                    node k = head;
+                    while(k.next!=n)
+                    {
+                        k=k.next;
+                    }
+                    k.next=k.next.next;
+                }
+                n= n.next;
+            }
+        }
+    }
+}
+class linkedlistdecreasingremoveduplicate
+{
+    public static void main(String[] args) {
+        ll l = new ll();
+        l.append(11);
+        l.append(11);
+        l.append(11);
+        l.append(21);
+        l.append(43);
+        l.append(43);
+        l.append(60);
+        l.show();
+        l.checkandremovedup();
+        l.show();
+    }
+}
