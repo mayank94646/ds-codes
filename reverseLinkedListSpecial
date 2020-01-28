@@ -1,0 +1,80 @@
+import java.util.*;
+class node
+{
+    int data;
+    node next;
+    node(int data)
+    {
+        this.data= data;
+    }
+}
+class ll
+{
+    node head;
+    public node append(int data)
+    {
+        node n = new node(data);
+        if(head==null)
+        {
+            head=n;
+        }
+        else
+        {
+            node m = head;
+            while(m.next!=null)
+            {
+                m = m.next;
+            }
+            m.next = n;
+        }
+        return head;
+    }
+    public void show(node x)
+    {
+        node m = x;
+        while(m!=null)
+        {
+            System.out.println(m.data);
+            m=m.next;
+        }
+    }
+    public node reverse(node n,int z)
+    {
+        node previous = null;
+        node next = null;
+        node c  = n;
+        int ct= 0;
+        while(ct<z && c!=null)
+        {
+            next = c.next;
+            c.next = previous;
+            previous = c;
+            c = next;
+            ct++;
+        }
+        if(next!=null)
+        {
+            n.next  = reverse(next,ct);
+        }
+        return previous;
+    }
+}
+class llrev
+{
+    public static void main(String[] args) {
+        ll l = new ll();
+
+        node x =l.append(1);
+         x =l.append(2);
+     x =    l.append(3);
+     x =    l.append(4);
+     x =    l.append(5);
+     x =    l.append(6);
+     x =    l.append(7);
+     x =l.append(8);
+        Scanner s = new Scanner(System.in);
+        int n = s.nextInt();
+     x = l.reverse(x,n);
+        l.show(x);
+    }
+}
